@@ -228,36 +228,3 @@ async def cb_handler(bot: Client, query: CallbackQuery):
         await m.edit(text=f"Error: {e}")
         pass
 
-
-@Client.on_callback_query()
-async def handle_callback_query(bot: Client, query: CallbackQuery):
-    if query.data == "all":
-        # Get the channel ID and start forwarding all messages in the channel
-        channel_id = query.message.chat.id
-        await forward_all_messages(bot, channel_id)
-
-    elif query.data == "docs":
-        # Get the channel ID and start forwarding all documents in the channel
-        channel_id = query.message.chat.id
-        await forward_messages_by_type(bot, channel_id, "document")
-
-    elif query.data == "photos":
-        # Get the channel ID and start forwarding all photos in the channel
-        channel_id = query.message.chat.id
-        await forward_messages_by_type(bot, channel_id, "photo")
-
-    elif query.data == "videos":
-        # Get the channel ID and start forwarding all videos in the channel
-        channel_id = query.message.chat.id
-        await forward_messages_by_type(bot, channel_id, "video")
-
-    elif query.data == "audio":
-        # Get the channel ID and start forwarding all audios in the channel
-        channel_id = query.message.chat.id
-        await forward_messages_by_type(bot, channel_id, "audio")
-
-    else:
-        # Ignore unknown callback queries
-        pass
-
-
